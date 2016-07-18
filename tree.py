@@ -21,9 +21,18 @@ from copy import copy as cp
 
 class Tree:
     def __init__(self, root):
+        """
+        Creates a tree using with the root.
+        :type root object
+        """
         self.tree = [root]
 
     def select(self, index):
+        """
+        Selects a node in the tree given it's place
+        :type index list
+        :rtype object
+        """
         element = self.tree
 
         for level in index:
@@ -32,6 +41,11 @@ class Tree:
         return element
 
     def parent(self, index):
+        """
+
+        :param index:
+        :return:
+        """
         my_index = cp(index)
         my_index.pop(len(my_index) - 2)
         return self.select(my_index), my_index
@@ -42,8 +56,14 @@ class Tree:
         my_index.extend([child_num, 0])
         return self.select(my_index), my_index
 
-    def add_child(self, child=None, index=0):
-        if index == 0:
+    def add_child(self, child=None, index=None):
+        """
+        Adds child to tree given a place
+        :type child object
+        :type index list
+        :rtype list
+        """
+        if index is None:
             my_index = [0]
         else:
             my_index = cp(index)
@@ -51,17 +71,29 @@ class Tree:
             my_index.pop()
 
         self.select(my_index).append([child])
-        my_index.append(len(self.select(index)) - 1)
+        my_index.append(len(self.select(my_index)) - 1)
         return my_index
 
-    def chain(self, items, index=0):
+    def chain(self, items, index=None):
+        """
+        Chains multiple children to a tree
+        :type items list
+        :type index list
+        :rtype list
+        """
         my_index = cp(index)
         for item in items:
             my_index = self.add_child(index, item)
 
         return my_index
 
-    def branch(self, items, index=0):
+    def branch(self, items, index=None):
+        """
+        Attaches multiple children to the same node
+        :type items list
+        :type index list
+        :rtype list
+        """
         indexes = []
         for item in items:
             indexes.append(self.add_child(index, item))
