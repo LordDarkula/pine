@@ -24,6 +24,9 @@ class Binary:
         return parent
 
     def add_child(self, child, direction):
+        if not direction == 1 and not direction == 2:
+            raise TypeError
+        
         self.index.pop()
         if direction == 2:
             self.current().append(None)
