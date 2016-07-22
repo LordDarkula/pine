@@ -27,12 +27,13 @@ class Tree:
         """
         self.tree = [root]
 
-    def select(self, index):
+    def select(self, index=None):
         """
         Selects a node in the tree given it's place
         :type index list
         :rtype object
         """
+        if index is None: index = []
         element = self.tree
 
         for level in index:
@@ -56,6 +57,13 @@ class Tree:
         my_index.extend([child_num, 0])
         return self.select(my_index), my_index
 
+    def children(self, index):
+        index.pop()
+        children = self.select(index)
+        children = cp(children)
+        children.pop(0)
+        return children
+
     def add_child(self, child=None, index=None):
         """
         Adds child to tree given a place
@@ -63,10 +71,9 @@ class Tree:
         :type index list
         :rtype list
         """
-        if index is None:
-            my_index = [0]
-        else:
-            my_index = cp(index)
+        if index is None: my_index = [0]
+        else: my_index = cp(index)
+
         if my_index[len(my_index) - 1] == 0:
             my_index.pop()
 
