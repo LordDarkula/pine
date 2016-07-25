@@ -15,6 +15,10 @@ class Node:
     def incl(self, elem):
         pass
 
+    @abstractmethod
+    def union(self, node):
+        pass
+
 class Empty(Node):
     def __init__(self):
         super(Empty, self).__init__(self)
@@ -22,6 +26,8 @@ class Empty(Node):
     def contains(self, elem): return False
 
     def incl(self, elem): return NonEmpty(elem, Empty(), Empty())
+
+    def union(self, node): return node
 
 
 class NonEmpty(Node):
@@ -38,3 +44,7 @@ class NonEmpty(Node):
     def incl(self, elem):
         if len(elem) < len(self.elem): return NonEmpty(self.elem, self.left.incl(elem), self.right)
         else: return NonEmpty(self.left, self.elem, self.right.incl(elem))
+
+    def union(self, that):
+        if not that.contains(self.elem): return NonEmpty(self.elem, self.left.union(that.incl(self.elem)), self.right.union(that.incl(self.elem)))
+        else: return NonEmpty(self.elem, self.left.union(that), self.right.union(that))
