@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/../pyne/.idea/pyne.iml" filepath="$PROJECT_DIR$/../pyne/.idea/pyne.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/pyne.iml" filepath="$PROJECT_DIR$/.idea/pyne.iml" />
     </modules>
   </component>
 </project>

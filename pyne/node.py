@@ -36,4 +36,5 @@ class NonEmpty(Node):
         else: self.left.contains(elem) or self.right.contains(elem)
 
     def incl(self, elem):
-        self.left.incl(elem)
+        if len(elem) < len(self.elem): return NonEmpty(self.elem, self.left.incl(elem), self.right)
+        else: return NonEmpty(self.left, self.elem, self.right.incl(elem))
