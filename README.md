@@ -30,7 +30,7 @@ The rest of the elements are lists that contain it's children
 ### Usage
 Trees must be initialized with a root, which can be any object
 ```python
-from pyne.tree import Tree
+from pyne import Tree
 
 # Creating a tree with a string root
 my_tree = Tree("my root")
