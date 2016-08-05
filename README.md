@@ -10,7 +10,7 @@ to anyone who needs a simple way to create trees in their project.
 
 Once this becomes a package, I will fill out this section.
 
-##Tree
+## Tree
 Scalable Tree is stored as an N dimensional list
 ```
          A [0]
@@ -28,3 +28,12 @@ Only the first element of each list is a non-list element
 The rest of the elements are lists that contain it's children
 
 ### Usage
+Trees must be initialized with a root, which can be any object
+```python
+from pyne.tree import Tree
+
+# Creating a tree with a string root
+my_tree = Tree("my root")
+
+```
+
