@@ -57,7 +57,7 @@ index3 = my_tree.add_child("childOfChild1", index=index1)
 index4 = my_tree.add_child("childOfChild2", index=index2)
 
 ```
-As you can see, to add a child to a particular node, you need that node's index.
+> As you can see, to add a child to a particular node, you need that node's index.
 
 Lets say I have a list of objects which I want to chain to childOfChild1.
 By chain I mean add the first item in the list as a child of childOfChild1,
