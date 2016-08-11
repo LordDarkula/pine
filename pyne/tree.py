@@ -41,6 +41,26 @@ class Tree:
 
         return element
 
+    def add_child(self, child=None, index=None):
+        """
+        Adds child to tree given a place
+        :type child object
+        :type index list
+        :rtype list
+        """
+        if index is None:
+            my_index = [0]
+        else:
+            my_index = cp(index)
+
+        if my_index[len(my_index) - 1] == 0:
+            my_index.pop()
+
+        self.select(my_index).append([child])
+        my_index.append(len(self.select(my_index)) - 1)
+        my_index.append(0)
+        return my_index
+
     def parent(self, index):
         """
 
@@ -58,28 +78,16 @@ class Tree:
         return self.select(my_index), my_index
 
     def children(self, index):
+        """
+
+        :param index:
+        :return:
+        """
         index.pop()
         children = self.select(index)
         children = cp(children)
         children.pop(0)
         return children
-
-    def add_child(self, child=None, index=None):
-        """
-        Adds child to tree given a place
-        :type child object
-        :type index list
-        :rtype list
-        """
-        if index is None: my_index = [0]
-        else: my_index = cp(index)
-
-        if my_index[len(my_index) - 1] == 0:
-            my_index.pop()
-
-        self.select(my_index).append([child])
-        my_index.append(len(self.select(my_index)) - 1)
-        return my_index
 
     def chain(self, items, index=None):
         """
@@ -88,7 +96,11 @@ class Tree:
         :type index list
         :rtype list
         """
-        my_index = cp(index)
+        if index is None:
+            my_index = [0]
+        else:
+            my_index = cp(index)
+
         for item in items:
             my_index = self.add_child(index, item)
 
