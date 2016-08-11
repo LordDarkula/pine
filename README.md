@@ -75,7 +75,7 @@ Now lets say we have another list, and I want to add all the items in the
 list as children to childOfChild2
 ```python
 
-banch_list = [5, 6]
+branch_list = [5, 6]
 
 #indexes is a list that contains indexes of all the newly added nodes in branch_list
 indexes = my_tree.branch(branch_list, index=index4)
