@@ -64,10 +64,39 @@ By chain I mean add the first item in the list as a child of childOfChild1,
 and add each successive item in the list as a child of the previous item.
 ```python
 
-my_list = [1, 2, 3, 4]
+chain_list = [1, 2, 3, 4]
 
 #index5 points to the last node in the chain
-index5 = my_tree.chain(my_list, index=index3)
+index5 = my_tree.chain(chain_list, index=index3)
+
+```
+
+Now lets say we have another list, and I want to add all the items in the 
+list as children to childOfChild2
+```python
+
+banch_list = [5, 6]
+
+#indexes is a list that contains indexes of all the newly added nodes in branch_list
+indexes = my_tree.branch(branch_list, index=index4)
+
+```
+
+After everything we did, my_tree will have the following structure
+```
+               "my root"
+                 /   \
+           "child1" "child2"
+              /         \
+     "childOfChild1"   "childOfChild2"
+          /               /      \
+         1               5        6
+        /
+       2
+      /
+     3
+    /
+   4
 
 ```
 
